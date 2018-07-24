@@ -3,17 +3,20 @@
   <head>
     <meta charset="utf-8">
 
-    <title>{{title}}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Exegesis</title>
 
-    <link rel='stylesheet' href='/stylesheets/prism.css' />
+    <!-- Prism library for syntax highlighting -->
+    {{!-- <link rel='stylesheet' href='/stylesheets/prism.css' />
+    <script src='/javascripts/prism.js'></script> --}}
 
-    <script src='/javascripts/prism.js'></script>
-
-    <!-- Consider https://prismjs.com/ as well -->
-    {{!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script> --}}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.3.0/highlightjs-line-numbers.min.js"></script>
+
+    <script src='/javascripts/annotate.js'></script>
+
+    <link rel='stylesheet' href='/stylesheets/index.css' />
   </head>
   <body>
     {{{body}}}

@@ -1,0 +1,29 @@
+div.container {
+    display: block;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.hljs-ln td {
+    padding-right: 15px;
+}
+
+.hljs-ln-code:hover {
+    background-color: lightgray;
+}
+
+code {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+textarea.comment {
+    width: 400px;
+    height: 100px;
+}
+
+.comment {
+    font-size: 14px;
+    line-height: 1.5;
+    font-family: sans-serif;
+}
