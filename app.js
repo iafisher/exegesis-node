@@ -6,14 +6,23 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
+var secrets = require('./secrets');
+
+var snippetModel = require('./models/snippet.js');
 
 var app = express();
 
 // database setup
-mongoose.connect('mongodb://localhost/exegesis')
+mongoose.connect(secrets.DB_CONNECTION_URI, {useNewUrlParser: true});
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+db.once('open', () => {
+    console.log("ow!");
+    const snip = new snippetModel({ full_text: "x = 42"});
+    snip.save().then(() => {console.log("saved")});
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
