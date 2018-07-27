@@ -5,7 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 
-var mainPageRouter = require('./routes/mainpage');
+var indexRouter = require('./routes/index');
+var snippetRouter = require('./routes/snippet');
 var secrets = require('./secrets');
 
 var snippetModel = require('./models/snippet.js');
@@ -34,7 +35,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', mainPageRouter);
+app.use('/', indexRouter);
+app.use('/snippet', snippetRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
