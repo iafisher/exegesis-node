@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 
-var indexRouter = require('./routes/index');
+var mainPageRouter = require('./routes/mainpage');
 var secrets = require('./secrets');
 
 var snippetModel = require('./models/snippet.js');
@@ -18,11 +18,11 @@ mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-db.once('open', () => {
-    console.log("ow!");
-    const snip = new snippetModel({ full_text: "x = 42"});
-    snip.save().then(() => {console.log("saved")});
-});
+// db.once('open', () => {
+//     console.log("ow!");
+//     const snip = new snippetModel({ full_text: "x = 42"});
+//     snip.save().then(() => {console.log("saved")});
+// });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -34,7 +34,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use('/', mainPageRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
