@@ -1,13 +1,23 @@
-var mongoose = require('mongoose');
+const Sequelize = require('sequelize');
+const sequelize = require('./init');
+const Snippet = require('./snippet');
 
-var Schema = mongoose.Schema;
-
-var CommentSchema = new Schema(
-    {
-        full_text: {type: String, required: true},
-        snippet: {type: Schema.Types.ObjectId, ref: 'Snippet', required: true},
-        lineno: {type: Number, required: true},
+const Comment = sequelize.define('comment', {
+    fullText: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+    lineNumber: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+    },
+    snippetID: {
+        type: Sequelize.INTEGER,
+        references: {
+            model: Snippet,
+            key: 'id',
+        }
     }
-)
+});
 
-module.exports = mongoose.model('Comment', CommentSchema)
+module.exports = Comment;

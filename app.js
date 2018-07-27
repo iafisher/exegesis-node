@@ -9,15 +9,16 @@ var indexRouter = require('./routes/index');
 var snippetRouter = require('./routes/snippet');
 var secrets = require('./secrets');
 
-var snippetModel = require('./models/snippet.js');
+var commentModel = require('./models/comment');
+var snippetModel = require('./models/snippet');
 
 var app = express();
 
 // database setup
-mongoose.connect(secrets.DB_CONNECTION_URI, {useNewUrlParser: true});
-mongoose.Promise = global.Promise;
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+// mongoose.connect(secrets.DB_CONNECTION_URI, {useNewUrlParser: true});
+// mongoose.Promise = global.Promise;
+// var db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // db.once('open', () => {
 //     console.log("ow!");
